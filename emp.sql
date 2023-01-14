@@ -6,7 +6,6 @@ https://www.youtube.com/watch?v=jVx7SYouZKk
 
 */
 
-
 -- 1. Retrieve employee number, NI number, and department number for all employees.
 SELECT `EmpNo`, `NINo`, `DeptNo` FROM employee;
 
@@ -59,8 +58,8 @@ SELECT
     d.DeptName
 FROM
     employee e
-JOIN department d ON
-    d.DeptNo = e.DeptNo;
+JOIN department d USING (DeptNo);
+
 -- 10. Retrieve the full names of employees, the names of the departments within
 -- which they work and their telephone extension.
 SELECT
@@ -70,10 +69,8 @@ SELECT
     t.Extension
 FROM
     employee e
-JOIN department d ON
-    d.DeptNo = e.DeptNo
-JOIN telephone t ON
-    t.EmpNo = e.EmpNo;
+JOIN department d USING (DeptNo)
+JOIN telephone t USING (EmpNo);
 
 -- MYSQL functions 
  CREATE FUNCTION pounds(amount FLOAT)
